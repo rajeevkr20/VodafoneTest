@@ -15,9 +15,16 @@ import com.vodafone.test.model.Voucher;
 import com.vodafone.test.service.CreditProcessed;
 
 
+/**
+ * @author Rajeev
+ *
+ */
 @Service
 public class CreditProcessedImpl implements CreditProcessed {
 
+	/* (non-Javadoc)
+	 * @see com.vodafone.test.service.CreditProcessed#processedForReward(com.vodafone.test.json.CreditVoucher)
+	 */
 	@Override
 	public List<Reward> processedForReward(CreditVoucher creditVoucher) {
 		List<Reward> rewardList = new ArrayList<Reward>();
@@ -43,17 +50,19 @@ public class CreditProcessedImpl implements CreditProcessed {
 				
 				rewardList.add(rw);
 			}
-			System.out.println(creditList);
-			System.out.println(voucherList);
+			
 		}
 		return rewardList;
 	}
 
 
 
-
-
-
+	/**
+	 * @param creditList
+	 * @param firstName
+	 * @param lastName
+	 * @return
+	 */
 	private List<String> getCreditList(List<Credit> creditList, String firstName, String lastName) {
 	
 		List<String> crList = new ArrayList<>();
@@ -67,6 +76,12 @@ public class CreditProcessedImpl implements CreditProcessed {
 	}
 
 
+	/**
+	 * @param voucherList
+	 * @param firstName
+	 * @param lastName
+	 * @return
+	 */
 	private List<String> getVoucherList(List<Voucher> voucherList, String firstName, String lastName) {
 		
 		List<String> vrList = new ArrayList<>();
@@ -82,6 +97,11 @@ public class CreditProcessedImpl implements CreditProcessed {
 
 
 
+	/**
+	 * @param creditList
+	 * @param voucherList
+	 * @return
+	 */
 	private Set<String> getNameSet(List<Credit> creditList, List<Voucher> voucherList) {
 		Set< String> nameSet = new HashSet<>();
 		

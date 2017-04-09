@@ -23,6 +23,10 @@ import com.vodafone.test.model.Credit;
 import com.vodafone.test.model.Reward;
 import com.vodafone.test.service.CreditProcessed;
 
+/**
+ * @author Rajeev
+ *
+ */
 @Controller
 @RequestMapping("/vodafone")
 public class VodafoneController {
@@ -32,17 +36,13 @@ public class VodafoneController {
 	@Autowired
 	CreditProcessed creditProcessed;
 	
-	@RequestMapping(value = "/getReward")	
-	public @ResponseBody List<Credit> getReward(){
-		
-		
-		System.out.println("tecs");
-		List<Credit>rl = new ArrayList<Credit>();
-		Credit rb = new Credit("wd", 233, "jdsh", "dsn");
-		rl.add(rb);
-	return rl;
-		
-	}
+	
+
+	/**
+	 * @param object
+	 * @param bindingResult
+	 * @return
+	 */
 	@RequestMapping(value = "/getRewardsByPerson", method = RequestMethod.POST, consumes={"application/json"}, produces={"application/json"}, headers="Accept=application/json")	
 	public @ResponseBody List<Reward> getRewardsByPerson(@RequestBody Object object,BindingResult bindingResult){
 		
@@ -56,7 +56,7 @@ public class VodafoneController {
 	    	 creditVoucher = mapper.readValue(json, mapType);
 		} catch (IOException e) {
 			
-			e.printStackTrace();
+			log.error(e.getMessage());
 		
 		}
 		
